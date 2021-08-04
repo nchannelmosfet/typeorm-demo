@@ -11,7 +11,7 @@
 # Set up Postgres
 Install latest Postgres. 
 psql exe found at: C:\Program Files\PostgreSQL\13\bin
-<br>
+
 Add this path the path variable "C:\Program Files\PostgreSQL\13\bin"
 
 ## login superuser postgres
@@ -50,3 +50,15 @@ Add this path the path variable "C:\Program Files\PostgreSQL\13\bin"
         "typeorm": "ts-node ./node_modules/typeorm/cli.js"
     }
 
+## load env var
+"ormconfig.json" is created as a default config file for TypeORM. 
+However, since json files have no notions of environment variables. It's insecure to put database username and password in it. 
+
+Refer to the doc https://typeorm.io/#/using-ormconfig/using-environment-variables and use <strong>.env, ormconfig.env or ormconfig.js instead. </strong>
+
+Note: TypeORM will load only the first valid config method and cannot use multiple config files simultaneously. 
+
+## Other dependencies
+Install type annotated express. 
+
+    npm i -D @types/express
