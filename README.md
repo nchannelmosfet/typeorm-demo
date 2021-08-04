@@ -1,12 +1,14 @@
-# Set up Node
+# Set up Project
 ## install typeorm globally
     npm install -g typeorm
 
 ## create typeorm project
     typeorm init
 
-## update dependencies versions
+## install/update dependencies
     npm install -D typescript@latest ts-node@latest
+    npm i -D @types/express
+    npm i express
 
 # Set up Postgres
 Install latest Postgres. 
@@ -35,7 +37,7 @@ Add this path the path variable "C:\Program Files\PostgreSQL\13\bin"
 ## display tables
     \d
 
-# NPM
+# NPM Scripts
 ## run scripts in package.json
     npm <script_name>
 
@@ -50,15 +52,10 @@ Add this path the path variable "C:\Program Files\PostgreSQL\13\bin"
         "typeorm": "ts-node ./node_modules/typeorm/cli.js"
     }
 
-## load env var
+## Load Environment Variables
 "ormconfig.json" is created as a default config file for TypeORM. 
 However, since json files have no notions of environment variables. It's insecure to put database username and password in it. 
 
-Refer to the doc https://typeorm.io/#/using-ormconfig/using-environment-variables and use <strong>.env, ormconfig.env or ormconfig.js instead. </strong>
+Refer to the doc https://typeorm.io/#/using-ormconfig/using-environment-variables and use <strong>.env, ormconfig.env or ormconfig.js instead. </strong> Remember to gitignore the config file that contains sensitive information. 
 
 Note: TypeORM will load only the first valid config method and cannot use multiple config files simultaneously. 
-
-## Other dependencies
-Install type annotated express. 
-
-    npm i -D @types/express
