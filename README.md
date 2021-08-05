@@ -6,9 +6,11 @@
     typeorm init
 
 ## install/update dependencies
-    npm install -D typescript@latest ts-node@latest
+    npm install -D typescript@latest ts-node@latest nodemon
     npm i -D @types/express
     npm i express
+    npm i uuid
+
 
 # Set up Postgres
 Install latest Postgres. 
@@ -36,6 +38,8 @@ Add this path the path variable "C:\Program Files\PostgreSQL\13\bin"
 
 ## display tables
     \d
+## display schema of a table
+    \d <table_name>
 
 # NPM Scripts
 ## run scripts in package.json

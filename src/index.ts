@@ -2,32 +2,12 @@ import "reflect-metadata";
 import {createConnection} from "typeorm";
 import express, { Request, Response } from 'express'
 
-import {User} from "./entity/User";
-
 
 const app = express();
+
 app.use(express.json());    // use json middleware
-
-// CREATE
-app.post('/users', async (req: Request, res: Response) => {
-    const { name, email, role } = req.body;
-
-    try {
-        const user = User.create({name, email, role});
-        await user.save(); 
-        return res.status(201).json(user);
-    }
-    catch(err) {
-        console.log(err);
-        return res.status(500).json(err); 
-    }
-});
-
-// READ
-// UPDATE
-// DELETE
-// FIND
-
+app.use('/users', require('./controllers/UserController'));
+app.use('/posts', require('./controllers/PostController'));
 
 createConnection().then(async () => {
 
