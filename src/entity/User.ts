@@ -7,6 +7,7 @@ import { Post } from "./Post";
 @Entity('users')
 export class User extends Model{
     @Column()
+    @Length(1, 255)
     name: string;
 
     @Column()

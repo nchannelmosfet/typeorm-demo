@@ -13,6 +13,7 @@ postController.post('/', async (req: Request, res: Response) => {
     try {
         const user = await User.findOneOrFail({ uuid: userUuid })
         const post = new Post({ title, body, user })
+
         await post.save()
         return res.json(post)
 

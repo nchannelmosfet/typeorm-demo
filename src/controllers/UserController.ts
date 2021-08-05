@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import { User } from "../entity/User";
+import { validate } from "class-validator";
 
 
 const userController = Router();
@@ -10,6 +11,9 @@ userController.post('/', async (req: Request, res: Response) => {
 
     try {
         const user = User.create({name, email, role});
+        const errors = await validate(user);
+        if (errors.length > 0) throw errors;
+
         await user.save(); 
         return res.status(201).json(user);
     }
