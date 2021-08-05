@@ -6,10 +6,8 @@
     typeorm init
 
 ## install/update dependencies
-    npm install -D typescript@latest ts-node@latest nodemon
-    npm i -D @types/express
-    npm i express
-    npm i uuid
+    npm i -D typescript@latest ts-node@latest nodemon @types/express
+    npm i express uuid
 
 
 # Set up Postgres
