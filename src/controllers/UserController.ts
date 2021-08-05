@@ -22,7 +22,8 @@ userController.post('/', async (req: Request, res: Response) => {
 // READ
 userController.get('/', async (_: Request, res: Response) => {
     try {
-        const users = await User.find();
+        // include related posts for users
+        const users = await User.find({ relations: ['posts'] });
         return res.json(users);
     }
     catch(err) {
@@ -72,7 +73,7 @@ userController.get('/:uuid', async (req: Request, res: Response) => {
     const uuid = req.params.uuid;
 
     try {
-        const user = await User.findOneOrFail({ uuid });
+        const user = await User.findOneOrFail({ uuid }, { relations: ['posts']});
         return res.json(user);
 
     } catch (err) {
