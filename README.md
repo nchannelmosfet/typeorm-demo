@@ -63,3 +63,44 @@ However, since json files have no notions of environment variables. It's insecur
 Refer to the doc https://typeorm.io/#/using-ormconfig/using-environment-variables and use <strong>.env, ormconfig.env or ormconfig.js instead. </strong> Remember to gitignore the config file that contains sensitive information. 
 
 Note: TypeORM will load only the first valid config method and cannot use multiple config files simultaneously. 
+
+## Synchronization vs Migration
+Synchronization (sync) updates the database from the entity or model definitions every time the application starts. Using migration is a safer option where it gives two operations:
+
+* Up (runs the migration and updates the database)
+* Down (reverts the migration and restore the database)
+
+This way the database can evolve along with the application in incremental changes. 
+
+Command to create migration file:
+
+    # -- (to pass argument to migration file)
+    # -n create-schema (name of the migration class)
+    npm run typeorm migration:generate -- -n create-schema
+
+Run migration:
+
+    npm run typeorm migration:run
+
+Revert migration:
+
+    npm run typeorm migration:revert
+
+## Build Application for Production
+TypeScript is only used in development. For production, the TypeScript code will be compiled to JavaScript. 
+
+Add build script to package.json:
+
+    "scripts": {
+        "build": "tsc"
+    }
+
+Run build script:
+
+    npm run build
+
+
+Run built application locally:
+
+    cd build
+    node index
